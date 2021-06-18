@@ -3,7 +3,11 @@ class Contact{
   final String name;
   final String pix;
 
-  Contact( this.id, this.name, this.pix);
+  Contact(
+      this.id,
+      this.name,
+      this.pix,
+      );
 
   @override
   String toString() {

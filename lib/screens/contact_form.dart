@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pixlist/models/contact.dart';
-import 'package:pixlist/screens/constacts_list.dart';
+import '../models/contact.dart';
+import '../database/dao/contact_dao.dart';
 
 class ContactForm extends StatefulWidget {
   @override
@@ -9,8 +9,8 @@ class ContactForm extends StatefulWidget {
 
 class _ContactFormState extends State<ContactForm> {
   final TextEditingController _nameController = TextEditingController();
-
   final TextEditingController _pixController = TextEditingController();
+  final ContactDao _dao = ContactDao();
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +52,9 @@ class _ContactFormState extends State<ContactForm> {
                     onPressed: () {
                       final String name = _nameController.text;
                       final String pix = _pixController.text;
-                      final Contact newContact = Contact(0,name,pix);
-                      Navigator.pop(context, newContact);
+                      final Contact newContact = Contact(0, name, pix);
+                      _dao.save(newContact).then((id) => Navigator.pop(context));
+
                     },
                     child: Text('Adicionar')),
               )

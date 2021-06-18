@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'constacts_list.dart';
+import '../screens/constacts_list.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -36,8 +35,18 @@ class Dashboard extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Icon(Icons.people),
-                        Text('Contatos'),
+                        Icon(
+                          Icons.people,
+                          color: Colors.white,
+                          size: 24.0,
+                        ),
+                        Text(
+                          'Contacts',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                          ),
+                        ),
                       ],
                     ),
                   ),
