@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
-import 'screens/dashboard.dart';
+import 'package:provider/provider.dart';
+import '../page/home_page.dart';
+import '../provider/contacts.dart';
 
+Future main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await .initializeApp();
 
-void main() {
-  runApp(PixListApp());
+  runApp(MyApp());
 }
 
-class PixListApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  static final String title = 'PixList Contatos';
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Colors.grey[900],
-        accentColor: Colors.blueAccent[700],
-        buttonTheme: ButtonThemeData(
-          buttonColor: Colors.amber[700],
-          textTheme: ButtonTextTheme.primary,
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (context) => ContactsProvider(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: title,
+          theme: ThemeData(
+            primarySwatch: Colors.amber,
+            scaffoldBackgroundColor: Colors.white,
+          ),
+          home: HomePage(),
         ),
-      ),
-      home: Dashboard(),
-    );
-  }
+      );
 }
-
-
